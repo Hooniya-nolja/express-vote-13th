@@ -1,7 +1,10 @@
 const express = require('express');
 const app = express();
+const cors = require('cors');
 
-const serverPort = 3001;
+app.use(cors());
+
+const serverPort = 8000;
 const candidates = [
     {
         id: 1,
