@@ -1,0 +1,44 @@
+{
+    "candidates": [
+        {
+            "id": 0,
+            "name": "김선종",
+            "voteCount": 120
+        },
+        {
+            "id": 1,
+            "name": "박예진",
+            "voteCount": 160
+        },
+        {
+            "id": 2,
+            "name": "안건희",
+            "voteCount": 200
+        },
+        {
+            "id": 3,
+            "name": "이승범",
+            "voteCount": 132
+        },
+        {
+            "id": 4,
+            "name": "김영우",
+            "voteCount": 186
+        },
+        {
+            "id": 5,
+            "name": "이호연",
+            "voteCount": 154
+        },
+        {
+            "id": 6,
+            "name": "이소정",
+            "voteCount": 199
+        },
+        {
+            "id": 7,
+            "name": "정윤선",
+            "voteCount": 201
+        }
+    ]
+}

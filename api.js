@@ -1,55 +1,59 @@
 const express = require('express');
 const app = express();
 const cors = require('cors');
+const jwt = require('jsonwebtoken');
+
+const candidates = require('./candidate.json').candidates;
 
 app.use(cors());
+require('dotenv').config();
 
-const serverPort = 8000;
-let candidates = [
-    {
-        id: 0,
-        name: '김선종',
-        voteCount: 120
-    },
-    {
-        id: 1,
-        name: '박예진',
-        voteCount: 160
-    },
-    {
-        id: 2,
-        name: '안건희',
-        voteCount: 200
-    },
-    {
-        id: 3,
-        name: '이승범',
-        voteCount: 132
-    },
-    {
-        id: 4,
-        name: '김영우',
-        voteCount: 186
-    },
-    {
-        id: 5,
-        name: '이호연',
-        voteCount: 154
-    },
-    {
-        id: 6,
-        name: '이소정',
-        voteCount: 199
-    },
-    {
-        id: 7,
-        name: '정윤선',
-        voteCount: 201
-    }
-]
+// let candidates = [
+//     {
+//         id: 0,
+//         name: '김선종',
+//         voteCount: 120
+//     },
+//     {
+//         id: 1,
+//         name: '박예진',
+//         voteCount: 160
+//     },
+//     {
+//         id: 2,
+//         name: '안건희',
+//         voteCount: 200
+//     },
+//     {
+//         id: 3,
+//         name: '이승범',
+//         voteCount: 132
+//     },
+//     {
+//         id: 4,
+//         name: '김영우',
+//         voteCount: 186
+//     },
+//     {
+//         id: 5,
+//         name: '이호연',
+//         voteCount: 154
+//     },
+//     {
+//         id: 6,
+//         name: '이소정',
+//         voteCount: 199
+//     },
+//     {
+//         id: 7,
+//         name: '정윤선',
+//         voteCount: 201
+//     }
+// ]
 
-const server = app.listen(serverPort, () => {
-    console.log(`Start Server : localhost:${serverPort}`);
+const PORT = process.env.SERVER_PORT || 8000;
+const server = app.listen(PORT, () => {
+    console.log(`Start Server : localhost:${PORT}`);
 });
 
 app.get('/api/candidates', async (req, res) => {
