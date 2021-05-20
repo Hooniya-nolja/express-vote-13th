@@ -1,0 +1,9 @@
+{
+    "user": [
+        {
+            "email": "admin@naver.com",
+            "password": 1234,
+            "name": "admin"
+        }
+    ]
+}

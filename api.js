@@ -2,10 +2,13 @@ const express = require('express');
 const app = express();
 const cors = require('cors');
 const jwt = require('jsonwebtoken');
+const bodyParser = require('body-parser');
 
 const candidates = require('./candidate.json').candidates;
+const users = require('./user.json').user;
 
 app.use(cors());
+app.use(bodyParser.json());
 require('dotenv').config();
 
 // let candidates = [
@@ -69,5 +72,36 @@ app.get('/api/vote', async (req, res) => {
         res.status(200).send(`Successfully Voted to ${candidates[voteId].name}`);
     } else {
         res.status(404).send('Candidate does not exist');
+    }
+});
+
+app.post('/api/signup', async (req, res) => {
+    try {
+        console.log('body : ', req.body);
+
+        let email = req.body.email;
+        let password = req.body.password;
+        let name = req.body.name;
+
+        if (email && password && name){
+            let userLogin = users.filter(user => user.email == email);
+
+            if (userLogin.length){
+                console.log('users : ', users);
+                res.status(409).send('already exist Email');
+            } else {
+                users.push({
+                    email: email,
+                    password: password,
+                    name: name
+                });
+                console.log('users : ', users);
+                res.status(201).send('Succesfully Generated');
+            }
+        } else {
+            res.status(400).send('Bad Request');
+        }
+    } catch (err){
+        console.log('ERROR : ', err);
     }
 });
